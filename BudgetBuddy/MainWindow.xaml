@@ -1,0 +1,239 @@
+﻿<Window x:Class="BudgetBuddy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetBuddy"
+        mc:Ignorable="d"
+        Title="BudgetBuddy" Height="750" Width="1100"
+        Background="#fff3eb"
+        FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background"      Value="White"/>
+            <Setter Property="BorderBrush"     Value="#EDD9CC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius"    Value="14"/>
+            <Setter Property="Padding"         Value="16"/>
+        </Style>
+        <Style x:Key="SectionTitle" TargetType="TextBlock">
+            <Setter Property="FontSize"   Value="18"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Foreground" Value="#5c3458"/>
+        </Style>
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="#fcf0fc"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontSize"   Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="BorderBrush" Value="#EDD9CC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" 
+                Background="#fff3eb"
+                BorderBrush="#edd9cc"
+                BorderThickness="0,0,0,1"
+                Padding="28,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <StackPanel Orientation="Horizontal" 
+                            VerticalAlignment="Center">
+                    <Ellipse Width="30" 
+                             Height="30" 
+                             Fill="#e8c9d9" 
+                             Margin="0,0,10,0"/>
+                    <TextBlock 
+                        Text="BudgetBuddy" 
+                        FontSize="20" 
+                        FontFamily="Georgia"
+                        FontWeight="Medium" 
+                        Foreground="#333"
+                        VerticalAlignment="Center"/>
+                </StackPanel>
+                
+                <!-- Summary Button -->
+                <Button Grid.Column="1"
+                        Content="View Summary"                        
+                        Width="150"
+                        FontFamily="Roboto"
+                        FontSize="20"
+                        Cursor="Hand"
+                        Foreground="White"
+                        Background="#756e91"
+                        HorizontalAlignment="Right"
+                        Click="ViewSummary_Click"/>
+            </Grid>        
+        </Border>
+
+        <!-- Main Content Area -->
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Margin="30">
+                <StackPanel Margin="0,0,0,20">
+                    <TextBlock Text="This Month's Budget" 
+                                Style="{StaticResource SectionTitle}"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                Margin="0,0,0,12"
+                                FontWeight="Light"
+                                FontSize="26"
+                                FontFamily="Palatino Linotype"/>
+                </StackPanel>
+                <UniformGrid Columns="3">
+                    
+                    <!---Balance-->
+                    <Border Style="{StaticResource Card}" Margin="0,0,12,0">
+                        <StackPanel>
+                            <TextBlock Text="Balance"
+                                       Style="{StaticResource SectionTitle}"
+                                       Margin="0,0,0,6"/>
+                            <TextBlock x:Name="BalanceLabel"
+                                       FontFamily="Palatino Linotype"
+                                       FontWeight="SemiBold"
+                                       Foreground="#3D2534"/>
+                            <TextBlock x:Name="BalanceChangeLabel"
+                                       FontSize="11"
+                                       Foreground="#6BA580"
+                                       Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <!---Income-->
+                    <Border Style="{StaticResource Card}" Margin="6,0,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Income"
+                                       Style="{StaticResource SectionTitle}"
+                                       Margin="0,0,0,6"/>
+                            <TextBlock x:Name="IncomeLabel"
+                                       FontFamily="Palatino Linotype"
+                                       FontSize="28"
+                                       FontWeight="SemiBold"
+                                       Foreground="#6BA580"/>
+                            <TextBlock x:Name="IncomeSubLabel"
+                                       FontSize="11"
+                                       Foreground="#b09aab"
+                                       Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Border>
+                    <!---Expense-->
+                    <Border Style="{StaticResource Card}" Margin="12,0,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Spent"
+                                       Style="{StaticResource SectionTitle}"
+                                       Margin="0,0,0,6"/>
+                            <TextBlock x:Name="SpentLabel"
+                                       FontFamily="Palatino Linotype"
+                                       FontSize="28"
+                                       FontWeight="SemiBold"
+                                       Foreground="#c97070"/>
+                            <TextBlock x:Name="SpentSubLabel"
+                                        FontSize="11"
+                                        Foreground="#b09aab"
+                                        Margin="0,4,0,0"/>
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <!--Budget banner-->
+                <Border>
+                    
+                </Border>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Entries card -->
+                    <Border Grid.Column="0" Style="{StaticResource Card}">
+                        <StackPanel>
+
+                            <Grid Margin="0,0,0,12">
+                                <TextBlock Text="Recent Entries" 
+                                           Style="{StaticResource SectionTitle}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="0,0,0,12"/>
+                                <Button Content="Add Entry"
+                                        Style="{StaticResource PrimaryButton}"
+                                        HorizontalAlignment="Right"
+                                        Padding="14,5"
+                                        Click="AddEntry_Click"/>
+                            </Grid>
+                            
+                            <!--Adds in rows-->
+                            <StackPanel x:Name="EntriesPanel"/>
+                        </StackPanel>                        
+                    </Border>
+
+                    <!-- Spending Breakdown Card -->
+                    <Border Grid.Column="2" Style="{StaticResource Card}">
+                        <StackPanel>
+                            <TextBlock Text="Spending breakdown"
+                                           Style="{StaticResource SectionTitle}"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Left"
+                                           Margin="0,0,0,12"/>
+
+                            <!---Adds in rows -->
+                            <StackPanel x:Name="BreakdownPanel"/>
+
+                            <!---Total print-->
+                            <Grid Margin="0,12,0,0">
+                                <TextBlock Text="Total spent"
+                                               FontSize="16"
+                                               FontWeight="SemiBold"
+                                               Foreground="#333"
+                                               HorizontalAlignment="Left"/>
+                                <TextBlock x:Name="TotalSpentText"
+                                               FontSize="11"
+                                               FontWeight="Medium"
+                                               Foreground="#333"
+                                               HorizontalAlignment="Right"/>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <!---Savings Goals -->
+                <Border Grid.Column ="4" Style="{StaticResource Card}">
+                    <StackPanel>
+                        <Grid Margin="0,0,0,12">
+                            <TextBlock Text="Savings Goals"
+                                        Style="{StaticResource SectionTitle}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"/>
+                            <Button Content="+ Add Goal"
+                                    Style="{StaticResource PrimaryButton}"
+                                    HorizontalAlignment="Right"
+                                    Padding="14,5"
+                                    Click="AddGoal_Click"/>
+                        </Grid>
+
+                        <!---Adds in rows -->
+                        <StackPanel x:Name="GoalsPanel"/>
+                    </StackPanel>
+                </Border>
+
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Window>
