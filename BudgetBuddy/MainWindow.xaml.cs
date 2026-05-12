@@ -16,17 +16,41 @@ namespace BudgetBuddy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private decimal MoneyIncome = 0; 
         public MainWindow()
         {
+             
+
             InitializeComponent();
         }
 
-        private void AddEntry_Click(object sender, RoutedEventArgs e)
+        private void AddExpense_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 
         private void AddGoal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddIncome_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (decimal.TryParse(IncomeInput.Text, System.Globalization.NumberStyles.Currency, System.Globalization.CultureInfo.GetCultureInfo("en-US"), out decimal result))
+            {
+                MoneyIncome = result;
+                IncomeDisplay.Text = MoneyIncome.ToString();
+            }
+            else
+            {
+                IncomeDisplay.Text = "invalid, please try again";
+
+            }
+        }
+
+        private void ViewSummary_Click(object sender, RoutedEventArgs e)
         {
 
         }
