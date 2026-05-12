@@ -118,18 +118,25 @@
                             <TextBlock Text="Income"
                                        Style="{StaticResource SectionTitle}"
                                        Margin="0,0,0,6"/>
-                            <TextBlock x:Name="IncomeLabel"
-                                       FontFamily="Palatino Linotype"
-                                       FontSize="28"
-                                       FontWeight="SemiBold"
-                                       Foreground="#6BA580"/>
-                            <TextBlock x:Name="IncomeSubLabel"
-                                       FontSize="11"
-                                       Foreground="#b09aab"
-                                       Margin="0,4,0,0"/>
+                            
+                            <TextBlock x:Name="IncomeDisplay"
+                                  Text="Enter Income"
+                                       FontSize="35"
+                                       Foreground="#0F0A99"
+                                       RenderTransformOrigin="0.519,0.024"/>
+                            <TextBox x:Name="IncomeInput"
+                                 Text="0.00"
+                                FontSize="20"
+                                Foreground="#b09aab"
+                                RenderTransformOrigin="0.519,0.024"/>       
+                            <Button Content="Confirm Income"
+                                    Style="{StaticResource PrimaryButton}"
+                                    HorizontalAlignment="Right"
+                                    Padding="14,5"
+                                    Click="AddIncome_Click"/>   
                         </StackPanel>
                     </Border>
-                    <!---Expense-->
+                    <!---Spent-->
                     <Border Style="{StaticResource Card}" Margin="12,0,0,0">
                         <StackPanel>
                             <TextBlock Text="Spent"
@@ -144,6 +151,7 @@
                                         FontSize="11"
                                         Foreground="#b09aab"
                                         Margin="0,4,0,0"/>
+                            
                         </StackPanel>
                     </Border>
                 </UniformGrid>
@@ -160,21 +168,21 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Entries card -->
+                    <!-- Expenses  card -->
                     <Border Grid.Column="0" Style="{StaticResource Card}">
                         <StackPanel>
 
                             <Grid Margin="0,0,0,12">
-                                <TextBlock Text="Recent Entries" 
+                                <TextBlock Text="Monthly Expenses" 
                                            Style="{StaticResource SectionTitle}"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Left"
                                            Margin="0,0,0,12"/>
-                                <Button Content="Add Entry"
+                                <Button Content="Add Expense"
                                         Style="{StaticResource PrimaryButton}"
                                         HorizontalAlignment="Right"
                                         Padding="14,5"
-                                        Click="AddEntry_Click"/>
+                                        Click="AddExpense_Click"/>
                             </Grid>
                             
                             <!--Adds in rows-->
