@@ -1,0 +1,103 @@
+﻿<Window x:Class="BudgetBuddy.AddExpenseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BudgetBuddy"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d"
+        Title="Add Expense"
+        Height="400" Width="400"
+        Background="#fff3eb"
+        FontFamily="Segoe UI"
+        WindowStartupLocation="CenterOwner">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="30">
+
+            <!-- Title -->
+            <TextBlock Text="Add Expense"
+                       FontFamily="Palatino Linotype"
+                       FontSize="22"
+                       FontWeight="Light"
+                       Foreground="#5c3458"
+                       Margin="0,0,0,24"/>
+
+            <!-- Expense Title -->
+            <TextBlock Text="Title"
+                       FontSize="12"
+                       Foreground="#b09aab"
+                       Margin="0,0,0,4"/>
+            <TextBox x:Name="TitleInput"
+                     FontSize="14"
+                     Padding="10,8"
+                     BorderBrush="#EDD9CC"
+                     BorderThickness="1"
+                     Background="White"
+                     Foreground="#333"
+                     Margin="0,0,0,16"/>
+
+            <!-- Category -->
+            <TextBlock Text="Category"
+                       FontSize="12"
+                       Foreground="#b09aab"
+                       Margin="0,0,0,4"/>
+            <ComboBox x:Name="CategoryInput"
+                      FontSize="14"
+                      Padding="10,8"
+                      BorderBrush="#EDD9CC"
+                      BorderThickness="1"
+                      Background="White"
+                      Foreground="#333"
+                      IsEditable="True"
+                      Margin="0,0,0,16">
+            </ComboBox>
+
+            <!-- Amount -->
+            <TextBlock Text="Amount ($)"
+                       FontSize="12"
+                       Foreground="#b09aab"
+                       Margin="0,0,0,4"/>
+            <TextBox x:Name="AmountInput"
+                     FontSize="14"
+                     Padding="10,8"
+                     BorderBrush="#EDD9CC"
+                     BorderThickness="1"
+                     Background="White"
+                     Foreground="#333"
+                     Margin="0,0,0,24"/>
+
+            <!-- Buttons -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="12"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0"
+                        Content="Cancel"
+                        FontSize="13"
+                        Padding="0,10"
+                        Background="White"
+                        Foreground="#756e91"
+                        BorderBrush="#EDD9CC"
+                        BorderThickness="1"
+                        Cursor="Hand"
+                        Click="Cancel_Click"/>
+
+                <Button Grid.Column="2"
+                        Content="Save Expense"
+                        FontSize="13"
+                        Padding="0,10"
+                        Background="#756e91"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Click="SaveExpense_Click"/>
+            </Grid>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
